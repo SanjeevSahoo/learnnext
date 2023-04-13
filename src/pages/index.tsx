@@ -16,7 +16,7 @@ const Dashbaord: NextPage = (): JSX.Element => {
 
   if (status === "authenticated") {
     return (
-      <div>
+      <div className="grid items-center justify-between p-4 text-xl">
         This page is protected for special people.{" "}
         <button onClick={handleSignOut}>Sign Out</button>
       </div>
