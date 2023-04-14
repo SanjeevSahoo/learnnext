@@ -5,7 +5,7 @@ interface IBlogData {
     title: string;
 }
 
-function StaticServe(props:{data: IBlogData[]}) {
+function StaticServe(props: { data: IBlogData[] }) {
     return (
         <ul>
             {props.data.map((post) => (
@@ -16,12 +16,15 @@ function StaticServe(props:{data: IBlogData[]}) {
 }
 
 export const getStaticProps: GetStaticProps<{ data: IBlogData[] }> = async () => {
-    const data: IBlogData[] = [
-        { id: 1, title: "Sanjeev", },
-        { id: 2, title: "Srikant", },
-    ];
+    const counterVal = Math.floor(Math.random() * 11);
 
-    return { props: { data } }
+    const data: IBlogData[] = [];
+
+    for (let i = 0; i < counterVal; i += 1) {
+        data.push({ id: i, title: `sanjeev ${i}` })
+    }
+
+    return { props: { data }, revalidate: 30 }
 }
 
 export default StaticServe
