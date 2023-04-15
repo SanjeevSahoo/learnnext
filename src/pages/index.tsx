@@ -21,6 +21,9 @@ const Dashbaord: NextPage = (): JSX.Element => {
         <h2>
           <Link href="/loadfromserver">Load From Server</Link>
         </h2>
+        <h2>
+          <Link href="/staticserve">Load Static Serve</Link>
+        </h2>
         This page is protected for special people.{" "}
         <button onClick={handleSignOut}>Sign Out</button>
       </div>
