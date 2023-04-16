@@ -18,13 +18,19 @@ const BLOG_LIST: IBlogData[] = [
     title: "The mighty Lion",
     post: "Lions are the King of the Jungle",
   },
+  {
+    id: "3",
+    title: "Tiger Pride",
+    post: "You cannot escape a Tiger",
+  },
 ];
 
-const Blog = () => {
+const Blog = (props: { data: IBlogData }) => {
   const router = useRouter();
-  const { pid } = router.query;
+  const { id } = router.query;
 
-  return <p>Blog: {pid}</p>;
+  return <div><p>Blog: {id}</p>
+    <div>Blog Title: {JSON.stringify(props.data)}</div></div>;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -36,7 +42,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   // Pass post data to the page via props
-  return { props: { post } };
+  const currPostId = params ? params.id : 0;
+  const currPost = BLOG_LIST.filter(item => item.id === currPostId)[0];
+  console.log(params, currPostId, currPost);
+
+  return { props: { data: currPost } };
 };
 
 export default Blog;
