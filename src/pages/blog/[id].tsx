@@ -44,7 +44,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // Pass post data to the page via props
   const currPostId = params ? params.id : 0;
   const currPost = BLOG_LIST.filter(item => item.id === currPostId)[0];
-  console.log(params, currPostId, currPost);
+  
 
   return { props: { data: currPost } };
 };
