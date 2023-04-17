@@ -28,6 +28,9 @@ export default NextAuth({
       },
     }),
   ],
+  session: {
+    maxAge: 20,
+  },
   pages: {
     signIn: "/auth/signin",
   },

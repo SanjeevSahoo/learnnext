@@ -1,11 +1,3 @@
-import { withAuth } from "next-auth/middleware";
-
-export default withAuth({
-  callbacks: {
-    authorized({ req, token }) {
-      return !!token;
-    },
-  },
-});
+export { default } from "next-auth/middleware";
 
 export const config = { matcher: ["/blog/:id*", "/post", "/user"] };
